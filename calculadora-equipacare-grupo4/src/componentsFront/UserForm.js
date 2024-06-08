@@ -48,12 +48,39 @@ const UserForm = ({ onSubmit }) => {
           <input
             type="text"
             value={name}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
         <div>
           <label>Dado5:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Dado6:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Dado7:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Dado8:</label>
           <input
             type="text"
             value={name}
