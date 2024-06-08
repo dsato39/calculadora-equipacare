@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 
 const UserForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ name, email, password });
+    onSubmit({ name,});
     setName('');
-    setEmail('');
-    setPassword('');
+  
   };
 
   return (
@@ -18,7 +15,7 @@ const UserForm = ({ onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Dado1:</label>
-          <input
+          <input placeholder='infDado1'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -27,7 +24,7 @@ const UserForm = ({ onSubmit }) => {
         </div>
         <div>
           <label>Dado2:</label>
-          <input
+          <input placeholder='infDado1'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -35,8 +32,8 @@ const UserForm = ({ onSubmit }) => {
           />
         </div>
         <div>
-          <label>Dado3:</label>
-          <input
+          <label>Dado3:</label> 
+          <input placeholder='infDado'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -45,7 +42,7 @@ const UserForm = ({ onSubmit }) => {
         </div>
         <div>
           <label>Dado4:</label>
-          <input
+          <input placeholder='infDado'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -54,7 +51,7 @@ const UserForm = ({ onSubmit }) => {
         </div>
         <div>
           <label>Dado5:</label>
-          <input
+          <input placeholder='infDado'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -63,7 +60,7 @@ const UserForm = ({ onSubmit }) => {
         </div>
         <div>
           <label>Dado6:</label>
-          <input
+          <input placeholder='infDado'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -72,19 +69,19 @@ const UserForm = ({ onSubmit }) => {
         </div>
         <div>
           <label>Dado7:</label>
-          <input
+          <input placeholder='infDado'
             type="text"
             value={name}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>  setName(e.target.value)}
             required
           />
         </div>
         <div>
           <label>Dado8:</label>
-          <input
+          <input placeholder='infDado'
             type="text"
             value={name}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>  setName(e.target.value)}
             required
           />
           
