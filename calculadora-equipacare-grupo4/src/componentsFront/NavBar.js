@@ -7,8 +7,8 @@ const Navbar = () => {
     return (
         <div className={style.navbar}>
             <img src={logo} alt="LogoEquipacare" className={style.logo} />
-            <img className={style.logoFace} src={iconeFace} alt="LogoFace" />
-            <p>Subtítulo</p>
+      
+            
             <p>Home</p>
         </div>
     );
