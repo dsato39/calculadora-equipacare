@@ -1,42 +1,49 @@
+import style from './buttonCheckBox.module.css'
 import React, { useState } from 'react';
 
 const ButtonCheckbox = () => {
-  const [checked, setChecked] = useState(false);
+  const [checkedOption, setCheckedOption] = useState(null);
 
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
+  const handleCheckboxChange = (option) => {
+    if (checkedOption === option) {
+      setCheckedOption(null);
+    } else {
+      setCheckedOption(option);
+    }
   };
 
   return (
-    <div>
-      <div>
+    <div className={style.ButtonCheckboxContainer}>
+      <div className={style.ButtonCheckbox}>
         <label>
           <input
             type="checkbox"
-            checked={checked}
-            onChange={handleCheckboxChange}
+            checked={checkedOption === 'opção1'}
+            onChange={() => handleCheckboxChange('opção1')}
           />
-          Check me
+          opção1
         </label>
       </div>
-      <div>
+
+      <div className={style.ButtonCheckbox}>
         <label>
           <input
             type="checkbox"
-            checked={checked}
-            onChange={handleCheckboxChange}
+            checked={checkedOption === 'opção2'}
+            onChange={() => handleCheckboxChange('opção2')}
           />
-          Check me
+          opção2
         </label>
       </div>
-      <div>
+
+      <div className={style.ButtonCheckbox}>
         <label>
           <input
             type="checkbox"
-            checked={checked}
-            onChange={handleCheckboxChange}
+            checked={checkedOption === 'opção3'}
+            onChange={() => handleCheckboxChange('opção3')}
           />
-          Check me
+          opção3
         </label>
       </div>
     </div>

@@ -1,0 +1,9 @@
+.navbar{ 
+display: block; 
+margin-bottom: 25px;
+background-color: #007bff;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+}

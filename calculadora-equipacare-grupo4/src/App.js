@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import UserForm from './componentsFront/UserForm';
 import Navbar from './componentsFront/NavBar'; 
 import Button from './componentsFront/Button'; 
@@ -5,14 +6,23 @@ import Footer from './componentsFront/Footer';
 import ButtonCheckbox from './componentsFront/ButtonCheckbox';
 
 function App() {
+  const [mensagem, setMensagem] = useState('');
+
+  const onSubmit = (data) => {
+    // Lógica para lidar com o envio do formulário
+    console.log('Dados do formulário:', data);
+    setMensagem('Formulário enviado com sucesso!');
+  };
+
   return (
     <div className="App">
-       <Navbar/>
-      <UserForm/>
-      <ButtonCheckbox/>
-      <Button/>
-      <Footer/>
+      <Navbar />
+      <UserForm onSubmit={onSubmit} />
+      <ButtonCheckbox />
+      <Button onClick={onSubmit} />
      
+      <Footer />
+      {mensagem && <p>{mensagem}</p>}
     </div>
   );
 }

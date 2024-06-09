@@ -1,6 +1,7 @@
+import style from './navbar.module.css'
 const Navbar =() => {
     return(
-        <div>
+        <div className={style.navbar}>
             <h1>Título</h1>
             <p>Subtítulo</p>
 
