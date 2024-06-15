@@ -1,0 +1,12 @@
+.calculadora{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.texto{
+    height: 100%;
+    display: flex;
+    text-align: center;
+   
+   flex-direction: column;
+}

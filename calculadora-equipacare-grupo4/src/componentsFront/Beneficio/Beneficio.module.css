@@ -1,0 +1,14 @@
+.Beneficio img{
+height:40px ;
+width: 40px;
+
+
+}
+.Beneficio{
+    display: flex;
+    flex-direction: column;
+}
+.texto{
+    display: flex;
+    flex-direction: row;
+}

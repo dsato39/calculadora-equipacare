@@ -1,13 +1,16 @@
 
 
+
 .ButtonCheckboxContainer {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
   }
   
   .ButtonCheckbox {
     margin: 0 5px;
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
   }
   
   .ButtonCheckbox label {
@@ -18,6 +21,7 @@
   
   .ButtonCheckbox input[type="checkbox"] {
     margin-right: 5px;
+
   }
   
   .ButtonCheckbox input[type="checkbox"]:checked + span {

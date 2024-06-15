@@ -21,57 +21,63 @@ const UserForm = ({ onSubmit }) => {
 
     if (typeof onSubmit === 'function') {
       onSubmit(campos);
-      setCampos({ dado1: '', dado2: '', dado3: '', dado4: '', dado5: '', dado6: '', dado7: '', dado8: ''
-      });
+      setCampos({ dado1: '', dado2: '', dado3: '', dado4: '', dado5: '', dado6: '', dado7: '', dado8: '' });
       setMensagem('Formulário enviado com sucesso!');
     } else {
       console.error('onSubmit não é uma função válida');
     }
   };
-//Campos de Formulários 
+
+  // Estilo do gradiente linear com tom azul aplicado diretamente ao formulário
+  const formStyle = {
+    background: 'linear-gradient(to bottom, #a1c4fd, #c2e9fb)',
+    backgroundColor: '#a1c4fd' // Cor de fallback
+  };
+
   return (
-    <div>
+    <div className={style.UserFormGeral}>
       {mensagem && <p>{mensagem}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={formStyle}>
         <div className={style.UserForm}>
           <label>Dado 1:</label>
-           <input name="dado1" placeholder="Digite o Dado 1" type="text" value={campos.dado1} onChange={handleChange} required/>
+          <input name="dado1" placeholder="Digite o Dado 1" type="text" value={campos.dado1} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
+        <div className={style.UserForm}>
           <label>Dado 2:</label>
-           <input name="dado2" placeholder="Digite o Dado 2" type="text" value={campos.dado2} onChange={handleChange} required/>
+          <input name="dado2" placeholder="Digite o Dado 2" type="text" value={campos.dado2} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
+        <div className={style.UserForm}>
           <label>Dado 3:</label>
-           <input name="dado3" placeholder="Digite o Dado 3" type="text" value={campos.dado3}onChange={handleChange}required/>
+          <input name="dado3" placeholder="Digite o Dado 3" type="text" value={campos.dado3} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
+        <div className={style.UserForm}>
           <label>Dado 4:</label>
-            <input name="dado4"placeholder="Digite o Dado 4" type="text" value={campos.dado4} onChange={handleChange}required/>
+          <input name="dado4" placeholder="Digite o Dado 4" type="text" value={campos.dado4} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
+        <div className={style.UserForm}>
           <label>Dado 5:</label>
-           <input name="dado5" placeholder="Digite o Dado 5" type="text" value={campos.dado5} onChange={handleChange} required/>
+          <input name="dado5" placeholder="Digite o Dado 5" type="text" value={campos.dado5} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
+        <div className={style.UserForm}>
           <label>Dado 6:</label>
-           <input name="dado6" placeholder="Digite o Dado 6" type="text" value={campos.dado6} onChange={handleChange} required/>
-        </div>
-        
-        <div className={style.UserForm} >
-          <label>Dado 7:</label>
-           <input name="dado7" placeholder="Digite o Dado 7" type="text" value={campos.dado7} onChange={handleChange} required/>
+          <input name="dado6" placeholder="Digite o Dado 6" type="text" value={campos.dado6} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm} >
-          <label>Dado 8:</label>
-           <input name="dado8" placeholder="Digite o Dado 8" type="text" value={campos.dado8} onChange={handleChange} required/>
+        <div className={style.UserForm}>
+          <label>Dado 7:</label>
+          <input name="dado7" placeholder="Digite o Dado 7" type="text" value={campos.dado7} onChange={handleChange} required />
         </div>
+
+        <div className={style.UserForm}>
+          <label>Dado 8:</label>
+          <input name="dado8" placeholder="Digite o Dado 8" type="text" value={campos.dado8} onChange={handleChange} required />
+        </div>
+
         <button id="buttonFrom" type="submit" className={style.buttonForm}>Enviar</button>
       </form>
     </div>

@@ -1,14 +1,24 @@
 .navbar{ 
-display: block; 
-margin-bottom: 25px;
-background-color: #007bff;
-color: white;
+justify-content: space-between;
+display: flex; 
+color: #416188;
 padding: 10px 20px;
 border: none;
 cursor: pointer;
+align-items: center;
 }
 .logoFace{
     display: flex;
     width: 40px; /* ajuste conforme necessário */
     height: 40px; /* ajuste conforme necessário */
   }
+  .Menu{
+    display: flex;
+    text-align: center;
+   
+  }
+p{
+  margin:  10px;
+  text-align: center;
+  align-items: center;
+}
