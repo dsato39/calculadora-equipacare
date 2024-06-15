@@ -1,12 +1,13 @@
-.calculadora{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.calculadora {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
 }
-.texto{
-    height: 100%;
-    display: flex;
-    text-align: center;
-   
-   flex-direction: column;
+.texto {
+  height: 100%;
+  display: flex;
+  text-align: center;
+
+  flex-direction: column;
 }

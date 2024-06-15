@@ -1,14 +1,16 @@
-.Beneficio img{
-height:40px ;
-width: 40px;
-
-
+.beneficios img {
+  height: 40px;
+  width: 40px;
 }
-.Beneficio{
-    display: flex;
-    flex-direction: column;
+.beneficios {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
 }
-.texto{
-    display: flex;
-    flex-direction: row;
+.textos {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
