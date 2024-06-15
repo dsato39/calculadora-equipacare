@@ -10,7 +10,7 @@ const Beneficio = () => {
     <div className={style.beneficios}>
       <h1>Benefícios da Nossa Calculadora</h1>
       <div className={style.textos}>
-        <div>
+        <div className={style.beneficio}>
           <img src={iconePlanejamento} alt="Planejamneto" />
           <h3>Planejamento Eficiente</h3>
           <p>
@@ -18,7 +18,7 @@ const Beneficio = () => {
             de esterilização, baseada em dados específicos do seu projeto
           </p>
         </div>
-        <div>
+        <div className={style.beneficio}>
           <img src={iconeResultado} alt="Resultado" />
           <h3>Resultados Personalizados</h3>
           <p>
@@ -26,7 +26,7 @@ const Beneficio = () => {
             equipamentos e as marcas que melhor atendem às suas necessidades
           </p>
         </div>
-        <div>
+        <div className={style.beneficio}>
           <img src={iconeFacilidadedeUso} alt="Facilidade" />
           <h3>Facilidade de Uso</h3>
           <p>
@@ -34,7 +34,7 @@ const Beneficio = () => {
             profissionais de saúde e administradores hospitalares
           </p>
         </div>
-        <div>
+        <div className={style.beneficio}>
           <img src={iconeConformidade} alt="Conformidade" />
           <h3>Conformidade e Segurança Avançada</h3>
           <p>
