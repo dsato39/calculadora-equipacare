@@ -10,7 +10,7 @@ import iconeConformidade from '../../Imagens/Icones/iconeConformidade.svg'
 const Beneficio = () => {
     return (
         <div className={style.Beneficio}>
-            <div>Benefícios da Nossa Calculadora</div>
+            <div className={style.titulo}><h1> Benefícios da Nossa Calculadora </h1></div>
                <div className={style.texto}>
 
                <div> <img src={iconePlanejamento} alt ='Planejamneto' /> <h2>Planejamento Eficiente</h2><p>Obtenha uma análise completa das suas necessidades de equipamentos de esterilização, baseada em dados específicos do seu projeto </p> </div>

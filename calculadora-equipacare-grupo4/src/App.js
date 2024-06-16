@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import UserForm from './componentsFront/UserForm';
 import Navbar from './componentsFront/NavBar'; 
-import Button from './componentsFront/Button'; 
-import Footer from './componentsFront/Footer';
-import ButtonCheckbox from './componentsFront/ButtonCheckbox';
+
+
+
 import Banner from './componentsFront/Banner/Banner';
 import Calculadora from './componentsFront/Calculadora/calculadora';
 import Beneficio from './componentsFront/Beneficio/beneficio';
@@ -26,10 +26,9 @@ function App() {
       <Calculadora/>
       <Beneficio /> 
       <UserForm onSubmit={onSubmit} />
-      <ButtonCheckbox />
-      <Button onClick={onSubmit} />
      
-      <Footer />
+      
+      
       {mensagem && <p>{mensagem}</p>}
     </div>
   );

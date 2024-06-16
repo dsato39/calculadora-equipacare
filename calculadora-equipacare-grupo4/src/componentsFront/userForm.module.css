@@ -1,11 +1,11 @@
 
 .UserForm {
     max-width: 400px;
-    margin: 0 auto;
+    margin : 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border: none;
+    border-radius: 15px;
+    background-color: #ffffff;
   }
   
   .UserForm label {
@@ -20,10 +20,12 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
+    background: #CCCCCC8A;
+
   }
   
   .UserForm button[type="submit"] {
-    background-color: #007bff;
+    background-color: #ff9919;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -32,7 +34,8 @@
   }
   
   .UserForm button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color:  #ff9919;
+    border: none;
   }
 
   .buttonForm {
@@ -41,7 +44,7 @@
     margin: 0 auto; 
     margin-top: 25px;
     margin-bottom: 25px;
-    background-color: #007bff;
+    background-color:  #ff9919;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -51,4 +54,7 @@
   
   .buttonForm:hover {
     background-color: #0056b3;
+  }
+  h1{
+    color: #0056b3;
   }

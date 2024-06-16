@@ -1,4 +1,4 @@
-import style from './userForm.module.css'
+import style from './userForm.module.css';
 import React, { useState } from 'react';
 
 const UserForm = ({ onSubmit }) => {
@@ -28,57 +28,27 @@ const UserForm = ({ onSubmit }) => {
     }
   };
 
-  // Estilo do gradiente linear com tom azul aplicado diretamente ao formulário
-  const formStyle = {
-    background: 'linear-gradient(to bottom, #a1c4fd, #c2e9fb)',
-    backgroundColor: '#a1c4fd' // Cor de fallback
-  };
-
   return (
     <div className={style.UserFormGeral}>
       {mensagem && <p>{mensagem}</p>}
-      <form onSubmit={handleSubmit} style={formStyle}>
+      <form onSubmit={handleSubmit}>
         <div className={style.UserForm}>
-          <label>Dado 1:</label>
-          <input name="dado1" placeholder="Digite o Dado 1" type="text" value={campos.dado1} onChange={handleChange} required />
+          <h1>Cadastre-se</h1>
+          <label>Nome:</label>
+          <input name="Nome" placeholder="Qual é o seu nome completo?" type="text" value={campos.nome} onChange={handleChange} required />
         </div>
 
         <div className={style.UserForm}>
-          <label>Dado 2:</label>
-          <input name="dado2" placeholder="Digite o Dado 2" type="text" value={campos.dado2} onChange={handleChange} required />
+          <label>E-mail:</label>
+          <input name="E-mail" placeholder="Qual é o seu e-mail" type="text" value={campos.email} onChange={handleChange} required />
         </div>
 
         <div className={style.UserForm}>
-          <label>Dado 3:</label>
-          <input name="dado3" placeholder="Digite o Dado 3" type="text" value={campos.dado3} onChange={handleChange} required />
+          <label>Telefone:</label>
+          <input name="Telefone" placeholder="Qual é o número do seu telefone?" type="text" value={campos.number} onChange={handleChange} required />
         </div>
 
-        <div className={style.UserForm}>
-          <label>Dado 4:</label>
-          <input name="dado4" placeholder="Digite o Dado 4" type="text" value={campos.dado4} onChange={handleChange} required />
-        </div>
-
-        <div className={style.UserForm}>
-          <label>Dado 5:</label>
-          <input name="dado5" placeholder="Digite o Dado 5" type="text" value={campos.dado5} onChange={handleChange} required />
-        </div>
-
-        <div className={style.UserForm}>
-          <label>Dado 6:</label>
-          <input name="dado6" placeholder="Digite o Dado 6" type="text" value={campos.dado6} onChange={handleChange} required />
-        </div>
-
-        <div className={style.UserForm}>
-          <label>Dado 7:</label>
-          <input name="dado7" placeholder="Digite o Dado 7" type="text" value={campos.dado7} onChange={handleChange} required />
-        </div>
-
-        <div className={style.UserForm}>
-          <label>Dado 8:</label>
-          <input name="dado8" placeholder="Digite o Dado 8" type="text" value={campos.dado8} onChange={handleChange} required />
-        </div>
-
-        <button id="buttonFrom" type="submit" className={style.buttonForm}>Enviar</button>
+        <button id="buttonFrom" type="submit" className={style.buttonForm}>Cadastre-se</button>
       </form>
     </div>
   );
