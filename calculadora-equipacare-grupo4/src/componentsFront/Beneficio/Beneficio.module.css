@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .Beneficio img{
 height:40px ;
 width: 40px;
@@ -18,3 +19,28 @@ width: 40px;
     font-size: 18px;
     text-align: center;
 }
+=======
+.beneficios img {
+  height: 40px;
+  width: 40px;
+}
+.beneficios {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  color: #416188;
+  padding: 40px;
+}
+.textos {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  color: black;
+}
+
+.beneficio {
+  flex: 1;
+}
+>>>>>>> 71a0a00fffd850fbeced73d77052f576c4b80d05
