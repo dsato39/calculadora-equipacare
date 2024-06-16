@@ -1,29 +1,8 @@
-<<<<<<< HEAD
-.Beneficio img{
-height:40px ;
-width: 40px;
-
-}
-.Beneficio{
-    background-color: 
-    #F5F5F5;
-    display: flex;
-    flex-direction: column;
-    border:rgb(3, 20, 34) ;
-}
-.texto{
-    display: flex;
-    flex-direction: row;
-}
-.titulo{
-    font-size: 18px;
-    text-align: center;
-}
-=======
 .beneficios img {
   height: 40px;
   width: 40px;
 }
+
 .beneficios {
   display: flex;
   flex-direction: column;
@@ -33,6 +12,7 @@ width: 40px;
   color: #416188;
   padding: 40px;
 }
+
 .textos {
   display: flex;
   flex-direction: row;
@@ -43,4 +23,8 @@ width: 40px;
 .beneficio {
   flex: 1;
 }
->>>>>>> 71a0a00fffd850fbeced73d77052f576c4b80d05
+
+.titulo {
+  font-size: 18px;
+  text-align: center;
+}
