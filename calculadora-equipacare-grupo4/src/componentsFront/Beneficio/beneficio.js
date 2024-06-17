@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Beneficio.module.css";
 import iconePlanejamento from "../../Imagens/Icones/iconePlanejamento.svg";
 import iconeResultado from "../../Imagens/Icones/iconeResultado.svg";
@@ -6,10 +6,64 @@ import iconeFacilidadedeUso from "../../Imagens/Icones/IconeFacilidadeUso.svg";
 import iconeConformidade from "../../Imagens/Icones/iconeConformidade.svg";
 
 const Beneficio = () => {
+  const [titulo, setTitulo] = useState("");
+  const tituloOriginal = "Benefícios da Nossa Calculadora";
+  const tempoDeEspera = 100; 
+  const tempoDeEsperaApagar = 1500; 
+
+  useEffect(() => {
+    let isMounted = true;
+    const textoAlvo = tituloOriginal + " ";
+
+    const typeAndErase = () => {
+      let currentText = "";
+      let eraseText = false;
+      
+      const type = () => {
+        if (isMounted) {
+          if (!eraseText && currentText.length < textoAlvo.length) {
+            currentText = textoAlvo.substring(0, currentText.length + 1);
+            setTitulo(currentText);
+            setTimeout(type, tempoDeEspera);
+          } else {
+            eraseText = true;
+            setTimeout(erase, tempoDeEsperaApagar);
+          }
+        }
+      };
+
+      const erase = () => {
+        if (isMounted) {
+          if (currentText.endsWith("Benefícios ")) {
+            eraseText = false;
+            setTimeout(type, tempoDeEspera);
+          } else {
+            if (currentText.length > 0) {
+              currentText = currentText.substring(0, currentText.length - 1);
+              setTitulo(currentText);
+              setTimeout(erase, tempoDeEspera / 2);
+            } else {
+              eraseText = false;
+              setTimeout(type, tempoDeEspera);
+            }
+          }
+        }
+      };
+
+      type();
+    };
+
+    typeAndErase();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className={style.Beneficio}>
       <div className={style.titulo}>
-        <h1> Benefícios da Nossa Calculadora </h1>
+        <h1>{titulo}</h1>
       </div>
       <div className={style.texto}>
         <div className={style.beneficio}>
