@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Pagina2 from './componentsFrontPg2/Home/Pagina2';
+import Conclusao from './componentsFrontPg2/Home/Conclusao';
 import UserForm from './componentsFront/Formulario/UserForm';
 import Navbar from './componentsFront/NavBar/NavBar';
 import Banner from './componentsFront/Banner/Banner';
@@ -15,14 +18,31 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navbar />
-      <Banner />
-      <Calculadora />
-      <Beneficio />
-      <UserForm onSubmit={onSubmit} />
-      {mensagem && <p>{mensagem}</p>}
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Banner />
+        <Calculadora />
+        <Beneficio />
+        <UserForm onSubmit={onSubmit} />
+        {mensagem && <p>{mensagem}</p>} 
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Pagina2</Link>
+            </li>
+            <li>
+              <Link to="/Conclusao">Conclusao</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Pagina2 />} />
+          <Route path="/Conclusao" element={<Conclusao/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
