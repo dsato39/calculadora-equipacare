@@ -1,7 +1,8 @@
-import style from "./userForm.module.css";
+import { Link } from "react-router-dom";
+import style from "./DimensionsForm.module.css";
 import React, { useState } from "react";
 
-const UserForm = ({ onSubmit }) => {
+const DimensionsForm = ({ onSubmit }) => {
   const [campos, setCampos] = useState({
     nome: "",
     email: "",
@@ -9,8 +10,6 @@ const UserForm = ({ onSubmit }) => {
     hospital: "",
     cep_hospital: "",
     cme: "",
-    dado7: "",
-    dado8: "",
   });
 
   const [mensagem, setMensagem] = useState("");
@@ -35,8 +34,6 @@ const UserForm = ({ onSubmit }) => {
         hospital: "",
         cep_hospital: "",
         cme: "",
-        dado7: "",
-        dado8: "",
       });
       setMensagem("Formulário enviado com sucesso!");
     } else {
@@ -121,13 +118,14 @@ const UserForm = ({ onSubmit }) => {
             required
           />
         </div>
-
-        <button id="buttonFrom" type="submit" className={style.buttonForm}>
-          Enviar
-        </button>
+        <Link to="/formdimensoes" style={{ textDecoration: "none" }}>
+          <button id="buttonFrom" type="submit" className={style.buttonForm}>
+            Enviar
+          </button>
+        </Link>
       </form>
     </div>
   );
 };
 
-export default UserForm;
+export default DimensionsForm;
