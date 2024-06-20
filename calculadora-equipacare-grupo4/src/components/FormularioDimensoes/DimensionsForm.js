@@ -118,7 +118,7 @@ const DimensionsForm = ({ onSubmit }) => {
             required
           />
         </div>
-        <Link to="/formdimensoes" style={{ textDecoration: "none" }}>
+        <Link to="/dimensionamento" style={{ textDecoration: "none" }}>
           <button id="buttonFrom" type="submit" className={style.buttonForm}>
             Enviar
           </button>
