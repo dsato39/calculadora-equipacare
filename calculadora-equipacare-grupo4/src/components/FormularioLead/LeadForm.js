@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import style from "./LeadForm.module.css";
 import React, { useState } from "react";
 
-const UserForm = ({ onSubmit }) => {
+const LeadForm = ({ onSubmit }) => {
   const [campos, setCampos] = useState({
     nome: "",
     email: "",
@@ -128,4 +128,4 @@ const UserForm = ({ onSubmit }) => {
   );
 };
 
-export default UserForm;
+export default LeadForm;

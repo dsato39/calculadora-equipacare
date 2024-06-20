@@ -1,4 +1,4 @@
-import UserForm from "../components/FormularioLead/LeadForm";
+import LeadForm from "../components/FormularioLead/LeadForm";
 import Navbar from "../components/NavBar/NavBar";
 import Banner from "../components/Banner/Banner";
 import Calculadora from "../components/Calculadora/calculadora";
@@ -11,7 +11,7 @@ function FormularioLead() {
       <Banner />
       <Calculadora />
       <Beneficio />
-      <UserForm />
+      <LeadForm />
     </div>
   );
 }
