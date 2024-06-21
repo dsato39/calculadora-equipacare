@@ -7,6 +7,7 @@ function Dimensionamento() {
     <div className="App">
       <Navbar />
       <Banner />
+      <DimensionamentoTab />
     </div>
   );
 }
