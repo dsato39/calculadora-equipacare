@@ -1,12 +1,13 @@
 import React from "react";
-import logo from "../../Imagens/logoCompleto.svg";
 
 import style from "./navbar.module.css";
 
 const Navbar = () => {
+  const logoUrl = "https://equipacare.com.br/wp-content/uploads/logo-eqpc.png"; 
+
   return (
     <div className={style.navbar}>
-      <img src={logo} alt="LogoEquipacare" className={style.logo} />
+      <img src={logoUrl} alt="LogoEquipacare" className={style.logo} />
       <div className={style.Menu}>
         <p>HOME</p>
         <p>CURSOS</p>
