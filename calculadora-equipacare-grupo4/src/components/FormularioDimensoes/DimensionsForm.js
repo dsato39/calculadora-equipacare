@@ -4,12 +4,15 @@ import React, { useState } from "react";
 
 const DimensionsForm = ({ onSubmit }) => {
   const [campos, setCampos] = useState({
-    nome: "",
-    email: "",
-    celular: "",
-    hospital: "",
-    cep_hospital: "",
-    cme: "",
+    quant_salas_cirurgicas: "",
+    cirurgias_sala_dia: "",
+    tecidos: "",
+    quant_dias_semana: "",
+    intervalo_pico: "",
+    quant_leitos_uti: "",
+    quant_leitos_outros: "",
+    quant_autoclaves: "",
+    quant_lavadoras: "",
   });
 
   const [mensagem, setMensagem] = useState("");
@@ -28,12 +31,15 @@ const DimensionsForm = ({ onSubmit }) => {
     if (typeof onSubmit === "function") {
       onSubmit(campos);
       setCampos({
-        nome: "",
-        email: "",
-        celular: "",
-        hospital: "",
-        cep_hospital: "",
-        cme: "",
+        quant_salas_cirurgicas: "",
+        cirurgias_sala_dia: "",
+        tecidos: "",
+        quant_dias_semana: "",
+        intervalo_pico: "",
+        quant_leitos_uti: "",
+        quant_leitos_outros: "",
+        quant_autoclaves: "",
+        quant_lavadoras: "",
       });
       setMensagem("Formulário enviado com sucesso!");
     } else {
@@ -48,76 +54,113 @@ const DimensionsForm = ({ onSubmit }) => {
       {mensagem && <p>{mensagem}</p>}
       <form onSubmit={handleSubmit}>
         <div className={style.UserForm}>
-          <label>Nome</label>
+          <label>Quantidade de salas cirúrgicas</label>
           <input
-            name="nome"
-            placeholder="Nome"
-            type="text"
-            value={campos.nome}
+            name="quant_salas_cirurgicas"
+            placeholder="Quantidade de salas cirúrgicas"
+            type="integer"
+            value={campos.quant_salas_cirurgicas}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={style.UserForm}>
-          <label>E-mail</label>
+          <label>Quantidade de cirurgias diárias por sala</label>
           <input
-            name="email"
-            placeholder="E-mail"
-            type="text"
-            value={campos.email}
+            name="cirurgias_sala_dia"
+            placeholder="Quantidade de cirurgias diárias por sala"
+            type="integer"
+            value={campos.cirurgias_sala_dia}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={style.UserForm}>
-          <label>Celular</label>
+          <label>Processamento de tecidos?</label>
           <input
-            name="celular"
-            placeholder="Celular"
-            type="text"
-            value={campos.celular}
+            name="tecidos"
+            placeholder="Sim ou Não"
+            type="boolean"
+            value={campos.tecidos}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={style.UserForm}>
-          <label>Nome do hospital</label>
+          <label>Quantos dias na semana são feitas cirurgias?</label>
           <input
-            name="hospital"
-            placeholder="Nome do hospital"
-            type="text"
-            value={campos.hospital}
+            name="quant_dias_semana"
+            placeholder="Quantos dias na semana são feitas cirurgias?"
+            type="integer"
+            value={campos.quant_dias_semana}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={style.UserForm}>
-          <label>CEP do hospital</label>
+          <label>Qual intervalo de pico de funcionamento da CME?</label>
           <input
-            name="cep_hospital"
-            placeholder="CEP do hospital"
-            type="text"
-            value={campos.cep_hospital}
+            name="intervalo_pico"
+            placeholder="Qual intervalo de pico de funcionamento da CME?"
+            type="integer"
+            value={campos.intervalo_pico}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={style.UserForm}>
-          <label>CME (Centro de Materiais Esterelizados)</label>
+          <label>Quantidade de leitos UTI</label>
           <input
-            name="cme"
-            placeholder="Novo, substituição ou ampliação"
-            type="text"
-            value={campos.cme}
+            name="quant_leitos_uti"
+            placeholder="Quantidade de leitos UTI"
+            type="integer"
+            value={campos.quant_leitos_uti}
             onChange={handleChange}
             required
           />
         </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos normais</label>
+          <input
+            name="quant_leitos_outros"
+            placeholder="Quantidade de leitos UTI"
+            type="integer"
+            value={campos.quant_leitos_outros}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Número de autoclaves</label>
+          <input
+            name="quant_autoclaves"
+            placeholder="Número de autoclaves"
+            type="integer"
+            value={campos.quant_autoclaves}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Número de lavadoras</label>
+          <input
+            name="quant_lavadoras"
+            placeholder="Número de lavadoras"
+            type="integer"
+            value={campos.quant_lavadoras}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
         <Link to="/dimensionamento" style={{ textDecoration: "none" }}>
           <button id="buttonFrom" type="submit" className={style.buttonForm}>
             Enviar

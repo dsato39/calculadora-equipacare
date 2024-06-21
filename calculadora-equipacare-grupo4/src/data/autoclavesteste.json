@@ -1,0 +1,86 @@
+[
+  {
+    "id": 8,
+    "marca": "A",
+    "modelo": "A8",
+    "perc_utiliz_pico": 0.7944,
+    "valor_total": 3000
+  },
+  {
+    "id": 9,
+    "marca": "A",
+    "modelo": "A9",
+    "perc_utiliz_pico": 0.6529,
+    "valor_total": 3200
+  },
+  {
+    "id": 16,
+    "marca": "B",
+    "modelo": "B7",
+    "perc_utiliz_pico": 0.7693,
+    "valor_total": 3300
+  },
+  {
+    "id": 17,
+    "marca": "B",
+    "modelo": "B8",
+    "perc_utiliz_pico": 0.6711,
+    "valor_total": 3200
+  },
+  {
+    "id": 22,
+    "marca": "C",
+    "modelo": "C5",
+    "perc_utiliz_pico": 0.8053,
+    "valor_total": 3400
+  },
+  {
+    "id": 23,
+    "marca": "C",
+    "modelo": "C6",
+    "perc_utiliz_pico": 0.6215,
+    "valor_total": 3500
+  },
+  {
+    "id": 32,
+    "marca": "D",
+    "modelo": "D7",
+    "perc_utiliz_pico": 0.8177,
+    "valor_total": 3250
+  },
+  {
+    "id": 33,
+    "marca": "D",
+    "modelo": "D8",
+    "perc_utiliz_pico": 0.6815,
+    "valor_total": 3700
+  },
+  {
+    "id": 37,
+    "marca": "E",
+    "modelo": "E4",
+    "perc_utiliz_pico": 0.8762,
+    "valor_total": 3800
+  },
+  {
+    "id": 45,
+    "marca": "E",
+    "modelo": "E12",
+    "perc_utiliz_pico": 0.8658,
+    "valor_total": 4000
+  },
+  {
+    "id": 48,
+    "marca": "F",
+    "modelo": "F2",
+    "perc_utiliz_pico": 0.892,
+    "valor_total": 3000
+  },
+  {
+    "id": 49,
+    "marca": "F",
+    "modelo": "F3",
+    "perc_utiliz_pico": 0.7712,
+    "valor_total": 3200
+  }
+]
