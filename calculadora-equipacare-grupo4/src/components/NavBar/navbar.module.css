@@ -1,16 +1,19 @@
 .navbar {
   justify-content: space-between;
   display: flex;
-  color: #416188;
+  color:  rgb(206, 223, 0);
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   align-items: center;
+  background-color:  rgb(0, 19, 41)
 }
 .logoFace {
   display: flex;
   width: 40px; /* ajuste conforme necessário */
   height: 40px; /* ajuste conforme necessário */
+ 
+
 }
 .Menu {
   display: flex;
@@ -20,4 +23,12 @@ p {
   margin: 10px;
   text-align: center;
   align-items: center;
+  
+ 
+
+}
+  
+
+p:hover {
+  color: rgb(184, 199, 0);
 }
