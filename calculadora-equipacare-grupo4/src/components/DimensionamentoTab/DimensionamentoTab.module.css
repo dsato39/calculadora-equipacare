@@ -1,4 +1,53 @@
-.tabela {
-  max-width: 400px;
-  margin: 0 auto;
+.tabelaGeral{
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
+
+
+
+
+
+  
+  .tabela {
+   
+   
+    width: 50%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 1em;
+    font-family: 'Arial', sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tabela thead tr {
+    background-color: rgb(0, 19, 41);
+    color: #ffffff;
+    text-align: left;
+   
+  }
+  
+  .tabela th,
+  .tabela td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+   
+  }
+  
+  .tabela tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .tabela tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .tabela tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  .tabela tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  

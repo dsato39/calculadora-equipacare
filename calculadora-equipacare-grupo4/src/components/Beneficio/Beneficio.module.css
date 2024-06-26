@@ -15,6 +15,7 @@
   flex-direction: column; 
   align-items: center; 
   margin: 0 10px; 
+  margin-bottom: 80px;
 }
 
 .beneficio img {
@@ -23,17 +24,18 @@
   margin-bottom: 10px; 
 }
 
-.beneficio h2, .beneficio p {
-  margin: 0; 
-}
-
 .titulo {
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
-  margin-bottom: 20px; 
+  margin-bottom: 150px; 
+  margin-top: 120px;
 }
 
 .texto {
+  background-color: rgb(235, 235, 235);
+  padding-top: 80px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: row; 
   justify-content: space-around; 

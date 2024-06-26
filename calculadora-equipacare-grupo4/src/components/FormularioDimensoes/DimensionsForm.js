@@ -55,7 +55,7 @@ const DimensionsForm = ({ onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div className={style.UserForm}>
           <label>Quantidade de salas cirúrgicas</label>
-          <input
+          <input className={style.input}
             name="quant_salas_cirurgicas"
             placeholder="Quantidade de salas cirúrgicas"
             type="integer"
@@ -67,7 +67,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Quantidade de cirurgias diárias por sala</label>
-          <input
+          <input className={style.input}
             name="cirurgias_sala_dia"
             placeholder="Quantidade de cirurgias diárias por sala"
             type="integer"
@@ -79,7 +79,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Processamento de tecidos?</label>
-          <input
+          <input className={style.input}
             name="tecidos"
             placeholder="Sim ou Não"
             type="boolean"
@@ -91,7 +91,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Quantos dias na semana são feitas cirurgias?</label>
-          <input
+          <input className={style.input}
             name="quant_dias_semana"
             placeholder="Quantos dias na semana são feitas cirurgias?"
             type="integer"
@@ -103,7 +103,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Qual intervalo de pico de funcionamento da CME?</label>
-          <input
+          <input className={style.input}
             name="intervalo_pico"
             placeholder="Qual intervalo de pico de funcionamento da CME?"
             type="integer"
@@ -115,7 +115,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Quantidade de leitos UTI</label>
-          <input
+          <input className={style.input}
             name="quant_leitos_uti"
             placeholder="Quantidade de leitos UTI"
             type="integer"
@@ -127,7 +127,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Quantidade de leitos normais</label>
-          <input
+          <input className={style.input}
             name="quant_leitos_outros"
             placeholder="Quantidade de leitos UTI"
             type="integer"
@@ -139,7 +139,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Número de autoclaves</label>
-          <input
+          <input className={style.input}
             name="quant_autoclaves"
             placeholder="Número de autoclaves"
             type="integer"
@@ -151,7 +151,7 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Número de lavadoras</label>
-          <input
+          <input className={style.input}
             name="quant_lavadoras"
             placeholder="Número de lavadoras"
             type="integer"

@@ -69,7 +69,7 @@ const Beneficio = () => {
         <div className={style.beneficio}>
           <img src={iconePlanejamento} alt="Planejamento" />
           <h2>Planejamento Eficiente</h2>
-          <p>
+          <p className={style.texto1}>
             Obtenha uma análise completa das suas necessidades de equipamentos
             de esterilização, baseada em dados específicos do seu projeto
           </p>

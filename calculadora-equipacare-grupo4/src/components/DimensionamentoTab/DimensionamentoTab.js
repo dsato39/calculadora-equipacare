@@ -6,7 +6,7 @@ import fakeAutoclaveData from "../../data/autoclavesteste.json";
 
 const DimensionamentoTab = () => {
   return (
-    <div>
+    <div className={style.tabelaGeral}>
       <table className={style.tabela}>
         <thead>
           <tr>
