@@ -9,6 +9,10 @@
   padding: 40px;
 }
 
+.beneficio p{
+  font-size: 15px;
+}
+
 .beneficio {
   flex: 1; 
   display: flex;
@@ -25,9 +29,9 @@
 }
 
 .titulo {
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
-  margin-bottom: 150px; 
+  margin-bottom: 100px; 
   margin-top: 120px;
 }
 
@@ -38,6 +42,7 @@
   margin-bottom: 80px;
   display: flex;
   flex-direction: row; 
+  text-align: center;
   justify-content: space-around; 
   width: 100%; 
 }
