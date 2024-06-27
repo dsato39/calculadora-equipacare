@@ -8,7 +8,7 @@
   margin-bottom: 5px;
 }
 
-.UserForm input[type="text"] {
+.UserForm input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
