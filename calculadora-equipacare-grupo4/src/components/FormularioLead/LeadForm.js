@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import style from "./LeadForm.module.css";
 import React, { useState } from "react";
+import axios from "axios";
 
-const LeadForm = ({ onSubmit }) => {
+const LeadForm = () => {
   const [campos, setCampos] = useState({
     nome: "",
     email: "",
     celular: "",
-    cargo_contato: "",
-    hospital: "",
+    cargo: "",
+    nome_hospital: "",
     cnpj_hospital: "",
     cep_hospital: "",
     status_empreend: "",
@@ -29,15 +30,16 @@ const LeadForm = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Submitting form", campos);
 
     if (
       !campos.nome ||
       !campos.email ||
       !campos.celular ||
-      !campos.cargo_contato ||
-      !campos.hospital ||
+      !campos.cargo ||
+      !campos.nome_hospital ||
       !campos.cnpj_hospital ||
       !campos.cep_hospital ||
       !campos.status_empreend ||
@@ -48,26 +50,35 @@ const LeadForm = ({ onSubmit }) => {
       return;
     }
 
-    if (typeof onSubmit === "function") {
-      onSubmit(campos);
-      setCampos({
-        nome: "",
-        email: "",
-        celular: "",
-        cargo_contato: "",
-        hospital: "",
-        cnpj_hospital: "",
-        cep_hospital: "",
-        status_empreend: "",
-        eng_clinica: "",
-        status_eng_clinica: "",
-        suporte_eng_clinica: "",
-        cme: "",
+    try {
+      const response = await axios.post("http://localhost:8080/", campos, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      setMensagem("Formulário enviado com sucesso!");
-      navigate("/formdimensoes");
-    } else {
-      console.log(typeof onSubmit);
+
+      if (response.status === 200) {
+        setMensagem("Formulário enviado com sucesso!");
+        setCampos({
+          nome: "",
+          email: "",
+          celular: "",
+          cargo: "",
+          nome_hospital: "",
+          cnpj_hospital: "",
+          cep_hospital: "",
+          status_empreend: "",
+          eng_clinica: "",
+          status_eng_clinica: "",
+          suporte_eng_clinica: "",
+          cme: "",
+        });
+        navigate("/formdimensoes");
+      } else {
+        setMensagem(`Erro: ${response.data.error}`);
+      }
+    } catch (error) {
+      setMensagem(`Erro: ${error.message}`);
     }
   };
 
@@ -114,10 +125,10 @@ const LeadForm = ({ onSubmit }) => {
         <div className={style.UserForm}>
           <label>Cargo</label>
           <input
-            name="cargo_contato"
+            name="cargo"
             placeholder="Cargo"
             type="text"
-            value={campos.cargo_contato}
+            value={campos.cargo}
             onChange={handleChange}
             required
           />
@@ -126,10 +137,10 @@ const LeadForm = ({ onSubmit }) => {
         <div className={style.UserForm}>
           <label>Nome do hospital</label>
           <input
-            name="hospital"
+            name="nome_hospital"
             placeholder="Nome do hospital"
             type="text"
-            value={campos.hospital}
+            value={campos.nome_hospital}
             onChange={handleChange}
             required
           />
