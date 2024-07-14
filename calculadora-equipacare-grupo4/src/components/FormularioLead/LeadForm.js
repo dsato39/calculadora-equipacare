@@ -58,6 +58,8 @@ const LeadForm = () => {
       });
 
       if (response.status === 200) {
+        const generatedId = response.data.id;
+        localStorage.setItem("leadId", generatedId);
         setMensagem("Formulário enviado com sucesso!");
         setCampos({
           nome: "",
