@@ -1,26 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import style from "./LeadForm.module.css";
+import { Link } from "react-router-dom";
+import style from "./DimensionsForm.module.css";
 import React, { useState } from "react";
-import axios from "axios";
 
-const LeadForm = () => {
+const DimensionsForm = ({ onSubmit }) => {
   const [campos, setCampos] = useState({
-    nome: "",
-    email: "",
-    celular: "",
-    cargo: "",
-    nome_hospital: "",
-    cnpj_hospital: "",
-    cep_hospital: "",
-    status_empreend: "",
-    eng_clinica: "",
-    status_eng_clinica: "",
-    suporte_eng_clinica: "",
-    cme: "",
+    quant_salas_cirurgicas: "",
+    cirurgias_sala_dia: "",
+    tecidos: "",
+    quant_dias_semana: "",
+    intervalo_pico: "",
+    quant_leitos_uti: "",
+    quant_leitos_outros: "",
+    quant_autoclaves: "",
+    quant_lavadoras: "",
   });
 
   const [mensagem, setMensagem] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,171 +25,159 @@ const LeadForm = () => {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submitting form", campos);
 
-    if (
-      !campos.nome ||
-      !campos.email ||
-      !campos.celular ||
-      !campos.cargo ||
-      !campos.nome_hospital ||
-      !campos.cnpj_hospital ||
-      !campos.cep_hospital ||
-      !campos.status_empreend ||
-      !campos.eng_clinica ||
-      !campos.cme
-    ) {
-      setMensagem("Por favor, preencha todos os campos obrigatórios.");
-      return;
-    }
-
-    try {
-      const response = await axios.post("http://localhost:8080/", campos, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+    if (typeof onSubmit === "function") {
+      onSubmit(campos);
+      setCampos({
+        quant_salas_cirurgicas: "",
+        cirurgias_sala_dia: "",
+        tecidos: "",
+        quant_dias_semana: "",
+        intervalo_pico: "",
+        quant_leitos_uti: "",
+        quant_leitos_outros: "",
+        quant_autoclaves: "",
+        quant_lavadoras: "",
       });
-
-      if (response.status === 200) {
-        const generatedId = response.data.id;
-        localStorage.setItem("leadId", generatedId);
-        setMensagem("Formulário enviado com sucesso!");
-        setCampos({
-          nome: "",
-          email: "",
-          celular: "",
-          cargo: "",
-          nome_hospital: "",
-          cnpj_hospital: "",
-          cep_hospital: "",
-          status_empreend: "",
-          eng_clinica: "",
-          status_eng_clinica: "",
-          suporte_eng_clinica: "",
-          cme: "",
-        });
-        navigate("/formdimensoes");
-      } else {
-        setMensagem(`Erro: ${response.data.error}`);
-      }
-    } catch (error) {
-      setMensagem(`Erro: ${error.message}`);
+      setMensagem("Formulário enviado com sucesso!");
+    } else {
+      console.error("onSubmit não é uma função válida");
     }
   };
+
+  // const status_cme = ["Novo", "Substituição", "Ampliação"];
 
   return (
     <div className={style.UserFormGeral}>
       {mensagem && <p>{mensagem}</p>}
       <form onSubmit={handleSubmit}>
-        {[
-          { label: "Nome", name: "nome", type: "text", required: true },
-          { label: "E-mail", name: "email", type: "email", required: true },
-          { label: "Celular", name: "celular", type: "tel", required: true },
-          { label: "Cargo", name: "cargo", type: "text", required: true },
-          {
-            label: "Nome do hospital",
-            name: "nome_hospital",
-            type: "text",
-            required: true,
-          },
-          {
-            label: "CNPJ do hospital",
-            name: "cnpj_hospital",
-            type: "text",
-            required: true,
-          },
-          {
-            label: "CEP do hospital",
-            name: "cep_hospital",
-            type: "text",
-            required: true,
-          },
-        ].map(({ label, name, type, required }) => (
-          <div key={name} className={style.UserForm}>
-            <label>{label}</label>
-            <input
-              name={name}
-              placeholder={label}
-              type={type}
-              value={campos[name]}
-              onChange={handleChange}
-              required={required}
-            />
-          </div>
-        ))}
-
-        {[
-          {
-            label: "Momento atual do empreendimento",
-            name: "status_empreend",
-            options: [
-              "Elaboração de projetos",
-              "Visita técnica para avaliação diagnóstica",
-              "Dimensionamento e especificação técnica dos equipamentos para aquisição",
-              "Análise técnica financeira comparativa dos equipamentos",
-              "Comissionamento das instalações",
-              "Outro momento",
-            ],
-            required: true,
-          },
-          {
-            label:
-              "Possui engenharia clínica para apoiar o processo de seleção dos equipamentos?",
-            name: "eng_clinica",
-            options: ["Sim", "Não"],
-            required: true,
-          },
-          {
-            label: "Se sim: sua Engenharia Clínica é própria ou terceirizada?",
-            name: "status_eng_clinica",
-            options: ["Própria", "Terceirizada"],
-          },
-          {
-            label: "CME (Centro de Materiais Esterelizados)",
-            name: "cme",
-            options: ["Novo", "Substituição", "Ampliação"],
-            required: true,
-          },
-        ].map(({ label, name, options, required }) => (
-          <div key={name} className={style.UserForm}>
-            <label htmlFor="dropdown">{label}</label>
-            <select
-              name={name}
-              id="dropdown"
-              value={campos[name]}
-              onChange={handleChange}
-              required={required}>
-              <option value="">Selecione...</option>
-              {options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
-
         <div className={style.UserForm}>
-          <label>
-            Do que sente mais falta no suporte da engenharia clinica?
-          </label>
+          <label>Quantidade de salas cirúrgicas</label>
           <input
-            name="suporte_eng_clinica"
-            placeholder="Do que sente mais falta no suporte da engenharia clinica?"
-            type="text"
-            value={campos.suporte_eng_clinica}
+            className={style.input}
+            name="quant_salas_cirurgicas"
+            placeholder="Quantidade de salas cirúrgicas"
+            type="integer"
+            value={campos.quant_salas_cirurgicas}
             onChange={handleChange}
+            required
           />
         </div>
 
-        <button id="buttonForm" type="submit" className={style.buttonForm}>
-          Enviar
-        </button>
+        <div className={style.UserForm}>
+          <label>Quantidade de cirurgias diárias por sala</label>
+          <input
+            className={style.input}
+            name="cirurgias_sala_dia"
+            placeholder="Quantidade de cirurgias diárias por sala"
+            type="integer"
+            value={campos.cirurgias_sala_dia}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Processamento de tecidos?</label>
+          <input
+            className={style.input}
+            name="tecidos"
+            placeholder="Sim ou Não"
+            type="boolean"
+            value={campos.tecidos}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantos dias na semana são feitas cirurgias?</label>
+          <input
+            className={style.input}
+            name="quant_dias_semana"
+            placeholder="Quantos dias na semana são feitas cirurgias?"
+            type="integer"
+            value={campos.quant_dias_semana}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Qual intervalo de pico de funcionamento da CME?</label>
+          <input
+            className={style.input}
+            name="intervalo_pico"
+            placeholder="Qual intervalo de pico de funcionamento da CME?"
+            type="integer"
+            value={campos.intervalo_pico}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos UTI</label>
+          <input
+            className={style.input}
+            name="quant_leitos_uti"
+            placeholder="Quantidade de leitos UTI"
+            type="integer"
+            value={campos.quant_leitos_uti}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos normais</label>
+          <input
+            className={style.input}
+            name="quant_leitos_outros"
+            placeholder="Quantidade de leitos UTI"
+            type="integer"
+            value={campos.quant_leitos_outros}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Número de autoclaves</label>
+          <input
+            className={style.input}
+            name="quant_autoclaves"
+            placeholder="Número de autoclaves"
+            type="integer"
+            value={campos.quant_autoclaves}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Número de lavadoras</label>
+          <input
+            className={style.input}
+            name="quant_lavadoras"
+            placeholder="Número de lavadoras"
+            type="integer"
+            value={campos.quant_lavadoras}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <Link to="/dimensionamento" style={{ textDecoration: "none" }}>
+          <button id="buttonFrom" type="submit" className={style.buttonForm}>
+            Enviar
+          </button>
+        </Link>
       </form>
     </div>
   );
 };
 
-export default LeadForm;
+export default DimensionsForm;
