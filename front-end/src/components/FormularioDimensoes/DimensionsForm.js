@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import style from "./DimensionsForm.module.css";
 import React, { useState } from "react";
+import axios from "axios";
 
-const DimensionsForm = ({ onSubmit }) => {
+const DimensionsForm = () => {
   const [campos, setCampos] = useState({
     quant_salas_cirurgicas: "",
     cirurgias_sala_dia: "",
@@ -13,9 +14,11 @@ const DimensionsForm = ({ onSubmit }) => {
     quant_leitos_outros: "",
     quant_autoclaves: "",
     quant_lavadoras: "",
+    email_cliente: "",
   });
 
   const [mensagem, setMensagem] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,41 +28,65 @@ const DimensionsForm = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (typeof onSubmit === "function") {
-      onSubmit(campos);
-      setCampos({
-        quant_salas_cirurgicas: "",
-        cirurgias_sala_dia: "",
-        tecidos: "",
-        quant_dias_semana: "",
-        intervalo_pico: "",
-        quant_leitos_uti: "",
-        quant_leitos_outros: "",
-        quant_autoclaves: "",
-        quant_lavadoras: "",
-      });
-      setMensagem("Formulário enviado com sucesso!");
-    } else {
-      console.error("onSubmit não é uma função válida");
+    const processTecidos = campos.tecidos === "Sim" ? 1 : 0;
+
+    const dataToSend = {
+      quant_salas_cirurgicas: campos.quant_salas_cirurgicas,
+      cirurgias_sala_dia: campos.cirurgias_sala_dia,
+      tecidos: processTecidos,
+      quant_dias_semana: campos.quant_dias_semana,
+      intervalo_pico: campos.intervalo_pico,
+      quant_leitos_uti: campos.quant_leitos_uti,
+      quant_leitos_outros: campos.quant_leitos_outros,
+      id_cliente: localStorage.getItem("leadId"),
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/dimensions",
+        dataToSend,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setMensagem("Formulário enviado com sucesso!");
+        setCampos({
+          quant_salas_cirurgicas: "",
+          cirurgias_sala_dia: "",
+          tecidos: "",
+          quant_dias_semana: "",
+          intervalo_pico: "",
+          quant_leitos_uti: "",
+          quant_leitos_outros: "",
+        });
+        navigate("/formresult");
+      } else {
+        setMensagem(`Erro: ${response.data.error}`);
+      }
+    } catch (error) {
+      setMensagem(`Erro: ${error.message}`);
     }
   };
-
-  // const status_cme = ["Novo", "Substituição", "Ampliação"];
 
   return (
     <div className={style.UserFormGeral}>
       {mensagem && <p>{mensagem}</p>}
       <form onSubmit={handleSubmit}>
+        {/* Campos do formulário */}
         <div className={style.UserForm}>
           <label>Quantidade de salas cirúrgicas</label>
           <input
             className={style.input}
             name="quant_salas_cirurgicas"
             placeholder="Quantidade de salas cirúrgicas"
-            type="integer"
+            type="number"
             value={campos.quant_salas_cirurgicas}
             onChange={handleChange}
             required
@@ -72,7 +99,7 @@ const DimensionsForm = ({ onSubmit }) => {
             className={style.input}
             name="cirurgias_sala_dia"
             placeholder="Quantidade de cirurgias diárias por sala"
-            type="integer"
+            type="number"
             value={campos.cirurgias_sala_dia}
             onChange={handleChange}
             required
@@ -81,15 +108,16 @@ const DimensionsForm = ({ onSubmit }) => {
 
         <div className={style.UserForm}>
           <label>Processamento de tecidos?</label>
-          <input
+          <select
             className={style.input}
             name="tecidos"
-            placeholder="Sim ou Não"
-            type="boolean"
             value={campos.tecidos}
             onChange={handleChange}
-            required
-          />
+            required>
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
         </div>
 
         <div className={style.UserForm}>
@@ -98,7 +126,7 @@ const DimensionsForm = ({ onSubmit }) => {
             className={style.input}
             name="quant_dias_semana"
             placeholder="Quantos dias na semana são feitas cirurgias?"
-            type="integer"
+            type="number"
             value={campos.quant_dias_semana}
             onChange={handleChange}
             required
@@ -111,7 +139,7 @@ const DimensionsForm = ({ onSubmit }) => {
             className={style.input}
             name="intervalo_pico"
             placeholder="Qual intervalo de pico de funcionamento da CME?"
-            type="integer"
+            type="number"
             value={campos.intervalo_pico}
             onChange={handleChange}
             required
@@ -124,7 +152,7 @@ const DimensionsForm = ({ onSubmit }) => {
             className={style.input}
             name="quant_leitos_uti"
             placeholder="Quantidade de leitos UTI"
-            type="integer"
+            type="number"
             value={campos.quant_leitos_uti}
             onChange={handleChange}
             required
@@ -137,44 +165,16 @@ const DimensionsForm = ({ onSubmit }) => {
             className={style.input}
             name="quant_leitos_outros"
             placeholder="Quantidade de leitos UTI"
-            type="integer"
+            type="number"
             value={campos.quant_leitos_outros}
             onChange={handleChange}
             required
           />
         </div>
 
-        <div className={style.UserForm}>
-          <label>Número de autoclaves</label>
-          <input
-            className={style.input}
-            name="quant_autoclaves"
-            placeholder="Número de autoclaves"
-            type="integer"
-            value={campos.quant_autoclaves}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={style.UserForm}>
-          <label>Número de lavadoras</label>
-          <input
-            className={style.input}
-            name="quant_lavadoras"
-            placeholder="Número de lavadoras"
-            type="integer"
-            value={campos.quant_lavadoras}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <Link to="/dimensionamento" style={{ textDecoration: "none" }}>
-          <button id="buttonFrom" type="submit" className={style.buttonForm}>
-            Enviar
-          </button>
-        </Link>
+        <button id="buttonFrom" type="submit" className={style.buttonForm}>
+          Enviar
+        </button>
       </form>
     </div>
   );

@@ -1,9 +1,14 @@
 import express from "express";
-import leadRouter from "./modules/lead/lead.route.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import leadRouter from "./modules/lead/lead.route.js";
+import dimensionsRouter from "./modules/dimensions/dimensions.route.js";
+
 dotenv.config();
+
 const app = express();
+
+// Middlewares
 app.use(express.json());
 app.use(
   cors({
@@ -13,12 +18,23 @@ app.use(
   })
 );
 
+// Rotas
 app.use("/", leadRouter);
+app.use("/dimensions", dimensionsRouter);
 
+// Rota de Health Check
 app.get("/health", (_, res) => {
   return res.send("Sistema está operacional!");
 });
 
-app.listen(8080, () => {
-  console.log("Servidor está rodando na porta 8080!");
+// Middleware de tratamento de erros
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ error: "Ocorreu um erro no servidor!" });
+});
+
+// Iniciando o servidor
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Servidor está rodando na porta ${PORT}!`);
 });
