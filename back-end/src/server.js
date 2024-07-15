@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import leadRouter from "./modules/lead/lead.route.js";
 import dimensionsRouter from "./modules/dimensions/dimensions.route.js";
+import calculationRouter from "./modules/calculation/calculation.route.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(
 // Rotas
 app.use("/", leadRouter);
 app.use("/dimensions", dimensionsRouter);
+app.use("/calculation", calculationRouter);
 
 // Rota de Health Check
 app.get("/health", (_, res) => {

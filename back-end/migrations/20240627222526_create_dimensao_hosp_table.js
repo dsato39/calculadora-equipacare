@@ -11,7 +11,10 @@ export const up = function (knex) {
     table.integer("quant_dias_semana");
     table.integer("interv_pico");
     table.integer("leitos_uti");
-    table.integer("leitos_outros");
+    table.integer("leitos_internacao");
+    table.integer("leitos_rpa");
+    table.integer("leitos_observacao");
+    table.integer("leitos_hospdia");
     table.integer("id_cliente").references("id").inTable("lead");
     table.timestamps(true, true);
   });

@@ -1,13 +1,17 @@
+import React from "react";
 import Navbar from "../components/NavBar/NavBar";
-import Banner from "../components/Banner/Banner";
 import DimensionsForm from "../components/FormularioDimensoes/DimensionsForm";
+import BannerVert from "../components/BannerVert/BannerVert";
+import "./FormularioDimensoes.css";
 
 function FormularioDimensoes() {
   return (
     <div className="App">
       <Navbar />
-      <Banner />
-      <DimensionsForm />
+      <div className="main-content">
+        <BannerVert />
+        <DimensionsForm />
+      </div>
     </div>
   );
 }

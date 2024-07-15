@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import style from "./DimensionsForm.module.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import style from "./DimensionsForm.module.css";
 
 const DimensionsForm = () => {
   const [campos, setCampos] = useState({
@@ -11,10 +11,10 @@ const DimensionsForm = () => {
     quant_dias_semana: "",
     intervalo_pico: "",
     quant_leitos_uti: "",
-    quant_leitos_outros: "",
-    quant_autoclaves: "",
-    quant_lavadoras: "",
-    email_cliente: "",
+    quant_leitos_internacao: "",
+    quant_leitos_rpa: "",
+    quant_leitos_observacoes: "",
+    quant_leitos_hospdia: "",
   });
 
   const [mensagem, setMensagem] = useState("");
@@ -40,13 +40,16 @@ const DimensionsForm = () => {
       quant_dias_semana: campos.quant_dias_semana,
       intervalo_pico: campos.intervalo_pico,
       quant_leitos_uti: campos.quant_leitos_uti,
-      quant_leitos_outros: campos.quant_leitos_outros,
+      quant_leitos_internacao: campos.quant_leitos_internacao,
+      quant_leitos_rpa: campos.quant_leitos_rpa,
+      quant_leitos_observacoes: campos.quant_leitos_observacoes,
+      quant_leitos_hospdia: campos.quant_leitos_hospdia,
       id_cliente: localStorage.getItem("leadId"),
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/dimensions",
+        "http://localhost:8080/formdimensoes",
         dataToSend,
         {
           headers: {
@@ -64,9 +67,15 @@ const DimensionsForm = () => {
           quant_dias_semana: "",
           intervalo_pico: "",
           quant_leitos_uti: "",
-          quant_leitos_outros: "",
+          quant_leitos_internacao: "",
+          quant_leitos_rpa: "",
+          quant_leitos_observacoes: "",
+          quant_leitos_hospdia: "",
         });
-        navigate("/formresult");
+
+        navigate("/calculation", {
+          state: { id_cliente: localStorage.getItem("leadId") },
+        });
       } else {
         setMensagem(`Erro: ${response.data.error}`);
       }
@@ -79,7 +88,6 @@ const DimensionsForm = () => {
     <div className={style.UserFormGeral}>
       {mensagem && <p>{mensagem}</p>}
       <form onSubmit={handleSubmit}>
-        {/* Campos do formulário */}
         <div className={style.UserForm}>
           <label>Quantidade de salas cirúrgicas</label>
           <input
@@ -160,13 +168,52 @@ const DimensionsForm = () => {
         </div>
 
         <div className={style.UserForm}>
-          <label>Quantidade de leitos normais</label>
+          <label>Quantidade de leitos internação</label>
           <input
             className={style.input}
-            name="quant_leitos_outros"
-            placeholder="Quantidade de leitos UTI"
+            name="quant_leitos_internacao"
+            placeholder="Quantidade de leitos internação"
             type="number"
-            value={campos.quant_leitos_outros}
+            value={campos.quant_leitos_internacao}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos RPA</label>
+          <input
+            className={style.input}
+            name="quant_leitos_rpa"
+            placeholder="Quantidade de leitos RPA"
+            type="number"
+            value={campos.quant_leitos_rpa}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos observações</label>
+          <input
+            className={style.input}
+            name="quant_leitos_observacoes"
+            placeholder="Quantidade de leitos observações"
+            type="number"
+            value={campos.quant_leitos_observacoes}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={style.UserForm}>
+          <label>Quantidade de leitos Hospital Dia</label>
+          <input
+            className={style.input}
+            name="quant_leitos_hospdia"
+            placeholder="Quantidade de leitos Hospital Dia"
+            type="number"
+            value={campos.quant_leitos_hospdia}
             onChange={handleChange}
             required
           />
