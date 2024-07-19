@@ -10,3 +10,12 @@ export const saveDimensions = async (params) => {
     throw new Error(`Erro ao salvar as dimensões: ${error.message}`);
   }
 };
+
+export const findByDimensionId = async (id) => {
+  try {
+    const lead = await knex("dimensao_hosp").where({ id }).first();
+    return lead;
+  } catch (error) {
+    throw new Error(`Erro ao buscar lead por cliente_id: ${error.message}`);
+  }
+};

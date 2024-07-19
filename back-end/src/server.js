@@ -24,11 +24,6 @@ app.use("/", leadRouter);
 app.use("/dimensions", dimensionsRouter);
 app.use("/calculation", calculationRouter);
 
-// Rota de Health Check
-app.get("/health", (_, res) => {
-  return res.send("Sistema está operacional!");
-});
-
 // Middleware de tratamento de erros
 app.use((err, req, res, next) => {
   console.error(err.stack);

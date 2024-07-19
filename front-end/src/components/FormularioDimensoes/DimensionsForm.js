@@ -6,15 +6,15 @@ import style from "./DimensionsForm.module.css";
 const DimensionsForm = () => {
   const [campos, setCampos] = useState({
     quant_salas_cirurgicas: "",
-    cirurgias_sala_dia: "",
-    tecidos: "",
+    quant_cirurgia_sala_dia: "",
+    process_tecidos: "",
     quant_dias_semana: "",
-    intervalo_pico: "",
-    quant_leitos_uti: "",
-    quant_leitos_internacao: "",
-    quant_leitos_rpa: "",
-    quant_leitos_observacoes: "",
-    quant_leitos_hospdia: "",
+    interv_pico: "",
+    leitos_uti: "",
+    leitos_internacao: "",
+    leitos_rpa: "",
+    leitos_observacao: "",
+    leitos_hospdia: "",
   });
 
   const [mensagem, setMensagem] = useState("");
@@ -31,25 +31,25 @@ const DimensionsForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const processTecidos = campos.tecidos === "Sim" ? 1 : 0;
+    const processTecidos = campos.process_tecidos === "Sim" ? 1 : 0;
 
     const dataToSend = {
       quant_salas_cirurgicas: campos.quant_salas_cirurgicas,
-      cirurgias_sala_dia: campos.cirurgias_sala_dia,
-      tecidos: processTecidos,
+      quant_cirurgia_sala_dia: campos.quant_cirurgia_sala_dia,
+      process_tecidos: processTecidos,
       quant_dias_semana: campos.quant_dias_semana,
-      intervalo_pico: campos.intervalo_pico,
-      quant_leitos_uti: campos.quant_leitos_uti,
-      quant_leitos_internacao: campos.quant_leitos_internacao,
-      quant_leitos_rpa: campos.quant_leitos_rpa,
-      quant_leitos_observacoes: campos.quant_leitos_observacoes,
-      quant_leitos_hospdia: campos.quant_leitos_hospdia,
+      interv_pico: campos.interv_pico,
+      leitos_uti: campos.leitos_uti,
+      leitos_internacao: campos.leitos_internacao,
+      leitos_rpa: campos.leitos_rpa,
+      leitos_observacao: campos.leitos_observacao,
+      leitos_hospdia: campos.leitos_hospdia,
       id_cliente: localStorage.getItem("leadId"),
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/formdimensoes",
+        "http://localhost:8080/dimensions",
         dataToSend,
         {
           headers: {
@@ -62,15 +62,15 @@ const DimensionsForm = () => {
         setMensagem("Formulário enviado com sucesso!");
         setCampos({
           quant_salas_cirurgicas: "",
-          cirurgias_sala_dia: "",
-          tecidos: "",
+          quant_cirurgia_sala_dia: "",
+          process_tecidos: "",
           quant_dias_semana: "",
-          intervalo_pico: "",
-          quant_leitos_uti: "",
-          quant_leitos_internacao: "",
-          quant_leitos_rpa: "",
-          quant_leitos_observacoes: "",
-          quant_leitos_hospdia: "",
+          interv_pico: "",
+          leitos_uti: "",
+          leitos_internacao: "",
+          leitos_rpa: "",
+          leitos_observacao: "",
+          leitos_hospdia: "",
         });
 
         navigate("/calculation", {
@@ -105,10 +105,10 @@ const DimensionsForm = () => {
           <label>Quantidade de cirurgias diárias por sala</label>
           <input
             className={style.input}
-            name="cirurgias_sala_dia"
+            name="quant_cirurgia_sala_dia"
             placeholder="Quantidade de cirurgias diárias por sala"
             type="number"
-            value={campos.cirurgias_sala_dia}
+            value={campos.quant_cirurgia_sala_dia}
             onChange={handleChange}
             required
           />
@@ -118,8 +118,8 @@ const DimensionsForm = () => {
           <label>Processamento de tecidos?</label>
           <select
             className={style.input}
-            name="tecidos"
-            value={campos.tecidos}
+            name="process_tecidos"
+            value={campos.process_tecidos}
             onChange={handleChange}
             required>
             <option value="">Selecione</option>
@@ -145,10 +145,10 @@ const DimensionsForm = () => {
           <label>Qual intervalo de pico de funcionamento da CME?</label>
           <input
             className={style.input}
-            name="intervalo_pico"
+            name="interv_pico"
             placeholder="Qual intervalo de pico de funcionamento da CME?"
             type="number"
-            value={campos.intervalo_pico}
+            value={campos.interv_pico}
             onChange={handleChange}
             required
           />
@@ -158,10 +158,10 @@ const DimensionsForm = () => {
           <label>Quantidade de leitos UTI</label>
           <input
             className={style.input}
-            name="quant_leitos_uti"
+            name="leitos_uti"
             placeholder="Quantidade de leitos UTI"
             type="number"
-            value={campos.quant_leitos_uti}
+            value={campos.leitos_uti}
             onChange={handleChange}
             required
           />
@@ -171,10 +171,10 @@ const DimensionsForm = () => {
           <label>Quantidade de leitos internação</label>
           <input
             className={style.input}
-            name="quant_leitos_internacao"
+            name="leitos_internacao"
             placeholder="Quantidade de leitos internação"
             type="number"
-            value={campos.quant_leitos_internacao}
+            value={campos.leitos_internacao}
             onChange={handleChange}
             required
           />
@@ -184,10 +184,10 @@ const DimensionsForm = () => {
           <label>Quantidade de leitos RPA</label>
           <input
             className={style.input}
-            name="quant_leitos_rpa"
+            name="leitos_rpa"
             placeholder="Quantidade de leitos RPA"
             type="number"
-            value={campos.quant_leitos_rpa}
+            value={campos.leitos_rpa}
             onChange={handleChange}
             required
           />
@@ -197,10 +197,10 @@ const DimensionsForm = () => {
           <label>Quantidade de leitos observações</label>
           <input
             className={style.input}
-            name="quant_leitos_observacoes"
+            name="leitos_observacao"
             placeholder="Quantidade de leitos observações"
             type="number"
-            value={campos.quant_leitos_observacoes}
+            value={campos.leitos_observacao}
             onChange={handleChange}
             required
           />
@@ -210,10 +210,10 @@ const DimensionsForm = () => {
           <label>Quantidade de leitos Hospital Dia</label>
           <input
             className={style.input}
-            name="quant_leitos_hospdia"
+            name="leitos_hospdia"
             placeholder="Quantidade de leitos Hospital Dia"
             type="number"
-            value={campos.quant_leitos_hospdia}
+            value={campos.leitos_hospdia}
             onChange={handleChange}
             required
           />

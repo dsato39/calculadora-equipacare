@@ -8,3 +8,12 @@ export const save = async (params) => {
     throw new Error(`Erro ao salvar o lead: ${error.message}`);
   }
 };
+
+export const findByLeadId = async (id) => {
+  try {
+    const lead = await knex("lead").where({ id }).first();
+    return lead;
+  } catch (error) {
+    throw new Error(`Erro ao buscar lead por cliente_id: ${error.message}`);
+  }
+};
