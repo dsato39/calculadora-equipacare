@@ -9,11 +9,8 @@ const Calculadora = () => {
         <h1>Descubra</h1>
         <p>
           A calculadora CME é uma solução que avalia dados hospitalares para
-          determinar a quantidade de
-          <br />
-          materiais esterelizados necessários, sugerindo os equipamentos
-          perfeitos para maximizar a<br />
-          eficiência e a conformidade da sua Central de Materiais Esterilizados
+          determinar a quantidade de materiais esterelizados necessários, sugerindo os equipamentos
+          perfeitos para maximizar a eficiência e a conformidade da sua Central de Materiais Esterilizados
         </p>
         <p>
           Descubra como você pode revolucionar o planejamento da sua CME,

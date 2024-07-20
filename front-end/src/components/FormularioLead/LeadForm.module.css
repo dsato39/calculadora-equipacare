@@ -17,6 +17,7 @@
   box-sizing: border-box;
   background-color: #cccccc;
   opacity: 0.4;
+
 }
 
 .UserForm button[type="submit"] {
@@ -47,4 +48,20 @@
 
 .buttonForm:hover {
   background-color: #fd920f;
+}
+
+
+.UserForm select{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #cccccc;
+  opacity: 0.4;
+}
+
+::placeholder{
+  color: black;
 }
