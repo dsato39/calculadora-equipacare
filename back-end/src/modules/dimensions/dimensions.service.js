@@ -11,9 +11,9 @@ export const saveDimensions = async (params) => {
   }
 };
 
-export const findByDimensionId = async (id) => {
+export const findByDimensionId = async (id_cliente) => {
   try {
-    const lead = await knex("dimensao_hosp").where({ id }).first();
+    const lead = await knex("dimensao_hosp").where({ id_cliente }).first();
     return lead;
   } catch (error) {
     throw new Error(`Erro ao buscar lead por cliente_id: ${error.message}`);

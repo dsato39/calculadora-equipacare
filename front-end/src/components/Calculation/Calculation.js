@@ -7,7 +7,7 @@ const CalculationPage = () => {
   const [dimensoesInfo, setDimensoesInfo] = useState(null);
 
   useEffect(() => {
-    const storedIdCliente = localStorage.getItem("id_cliente");
+    const storedIdCliente = localStorage.getItem("leadId");
     setIdCliente(storedIdCliente);
   }, []);
 
@@ -16,12 +16,12 @@ const CalculationPage = () => {
       try {
         if (id_cliente) {
           const responseLead = await axios.get(
-            `http://localhost:8080/leads/${id_cliente}`
+            `http://localhost:8080/${id_cliente}`
           );
           setLeadInfo(responseLead.data);
 
           const responseDimensoes = await axios.get(
-            `http://localhost:8080/dimensao_hosp/${id_cliente}`
+            `http://localhost:8080/dimensions/${id_cliente}`
           );
           setDimensoesInfo(responseDimensoes.data);
         }
@@ -43,7 +43,19 @@ const CalculationPage = () => {
             <div>
               <p>Nome: {leadInfo.nome}</p>
               <p>Email: {leadInfo.email}</p>
-              {/* Adicionar mais campos conforme necessário */}
+              <p>Celular: {leadInfo.celular}</p>
+              <p>Cargo: {leadInfo.cargo}</p>
+              <p>Nome do Hospital: {leadInfo.nome_hospital}</p>
+              <p>CNPJ do Hospital: {leadInfo.cnpj_hospital}</p>
+              <p>CEP do Hospital: {leadInfo.cep_hospital}</p>
+              <p>Status do empreendimento: {leadInfo.status_empreend}</p>
+              <p>Possui engenharia clínica: {leadInfo.eng_clinica}</p>
+              <p>Status engenharia clínica: {leadInfo.status_eng_clinica}</p>
+              <p>
+                Do que sente falta no suporte da engenharia clínica:{" "}
+                {leadInfo.suporte_eng_clinica}
+              </p>
+              <p>CME: {leadInfo.cme}</p>
             </div>
           ) : (
             <p>Carregando informações do cliente...</p>
@@ -52,9 +64,37 @@ const CalculationPage = () => {
           <h2>Dimensões do Hospital</h2>
           {dimensoesInfo ? (
             <div>
-              <p>Área total: {dimensoesInfo.area_total}</p>
-              <p>Número de leitos: {dimensoesInfo.num_leitos}</p>
-              {/* Adicionar mais campos conforme necessário */}
+              <p>
+                Número de salas cirúrgicas:{" "}
+                {dimensoesInfo.quant_salas_cirurgicas}
+              </p>
+              <p>
+                Quantidade diária de cirurgias por sala:{" "}
+                {dimensoesInfo.quant_cirurgia_sala_dia}
+              </p>
+              <p>Possui processamento de tecidos: {dimensoesInfo.tecidos}</p>
+              <p>
+                Quantidade de dias de cirurgias na semana:{" "}
+                {dimensoesInfo.quant_dias_semana}
+              </p>
+              <p>
+                Intervalo de pico de funcionamento da CME:{" "}
+                {dimensoesInfo.interv_pico}
+              </p>
+              <p>Quantidade de leitos de UTI: {dimensoesInfo.leitos_uti}</p>
+              <p>
+                Quantidade de leitos de internação:{" "}
+                {dimensoesInfo.leitos_internacao}
+              </p>
+              <p>Quantidade de leitos de RPA: {dimensoesInfo.leitos_rpa}</p>
+              <p>
+                Quantidade de leitos de observação:{" "}
+                {dimensoesInfo.leitos_observacao}
+              </p>
+              <p>
+                Quantidade de leitos de hospital dia:{" "}
+                {dimensoesInfo.leitos_hospdia}
+              </p>
             </div>
           ) : (
             <p>Carregando dimensões do hospital...</p>
