@@ -26,7 +26,8 @@ export const handleVolumeCalculation = async (req, res) => {
     } = formData;
 
     // Realizar cálculos
-    const volume_cirurgias = quant_salas_cirurgicas * quant_cirurgia_sala_dia;
+    const volume_cirurgias =
+      quant_salas_cirurgicas * quant_cirurgia_sala_dia * 1.5;
     const volume_uti = leitos_uti * 0.5;
     const volume_outros =
       (leitos_internacao + leitos_rpa + leitos_observacao + leitos_hospdia) *
