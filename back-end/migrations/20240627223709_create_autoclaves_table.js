@@ -12,6 +12,7 @@ export const up = function (knex) {
     table.integer("tempo_ciclo");
     table.integer("tempo_teste_bd");
     table.integer("tempo_aquecimento");
+    table.integer("tempo_disp_diario");
     table.float("preco_min");
     table.float("preco_max");
     table.timestamps(true, true);
