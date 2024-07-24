@@ -4,7 +4,7 @@ import FormularioLead from "./pages/FormularioLead";
 import FormularioDimensoes from "./pages/FormularioDimensoes";
 import Dimensionamento from "./pages/Dimensionamento";
 import ScrollToTop from "./components/ScrollToTop";
-import CalculationPage from "./components/Calculation/Calculation";
+import CalculationPage from "./pages/Calculation";
 
 const AppRoutes = () => {
   return (
