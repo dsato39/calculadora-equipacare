@@ -4,7 +4,7 @@ import FormularioLead from "./pages/FormularioLead";
 import FormularioDimensoes from "./pages/FormularioDimensoes";
 import Dimensionamento from "./pages/Dimensionamento";
 import ScrollToTop from "./components/ScrollToTop";
-import CalculationPage from "./pages/Calculation";
+import CalculationLead from "./pages/CalculationLead";
 
 const AppRoutes = () => {
   return (
@@ -14,7 +14,7 @@ const AppRoutes = () => {
         <Route path="/" element={<FormularioLead />}></Route>
         <Route path="/formdimensoes" element={<FormularioDimensoes />}></Route>
         <Route path="/dimensionamento" element={<Dimensionamento />} />
-        <Route path="/calculation" element={<CalculationPage />} />
+        <Route path="/calculation" element={<CalculationLead />} />
       </Routes>
     </Router>
   );

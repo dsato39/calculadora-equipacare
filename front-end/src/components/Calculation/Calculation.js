@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import style from "./Calculation.module.css";
 
 const CalculationPage = () => {
   const [id_cliente, setIdCliente] = useState(null);
@@ -34,7 +35,7 @@ const CalculationPage = () => {
   }, [id_cliente]);
 
   return (
-    <div>
+    <div className={style.Calculation}>
       <h1>Página de Cálculo</h1>
       {id_cliente ? (
         <div>
