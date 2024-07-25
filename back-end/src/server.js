@@ -36,4 +36,8 @@ app.listen(PORT, () => {
   console.log(`Servidor está rodando na porta ${PORT}!`);
 });
 
+app.get("/", (_, res) => {
+  return res.send("Sistema está operacional!");
+});
+
 export default app;
